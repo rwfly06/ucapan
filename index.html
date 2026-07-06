@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun, Ibu!</title>
+    <style>
+        /* Reset & Basic Setup */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Background gelap agar tampilan HP menonjol jika dibuka di PC */
+            background-color: #e2e8f0; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Kontainer Utama - Dibuat seukuran layar HP */
+        .mobile-card {
+            width: 100%;
+            max-width: 420px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (min-height: 800px) {
+            .mobile-card {
+                min-height: 800px;
+                border-radius: 20px;
+            }
+        }
+
+        /* Dekorasi Lingkaran Latar Belakang */
+        .circle-1, .circle-2 {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: 1;
+        }
+        .circle-1 {
+            width: 200px; height: 200px;
+            top: -50px; left: -50px;
+        }
+        .circle-2 {
+            width: 300px; height: 300px;
+            bottom: -100px; right: -100px;
+        }
+
+        /* Konten Kartu */
+        .content {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px 20px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            
+            /* Diperbaiki: Menambahkan dukungan -webkit- untuk browser Safari/iOS */
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+            
+            animation: slideUpFade 1.2s ease-out;
+        }
+
+        /* Tipografi */
+        h1 {
+            color: #d6336c;
+            font-size: 26px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            color: #495057;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+
+        .doa {
+            color: #343a40;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .doa:last-of-type {
+            margin-bottom: 30px;
+        }
+
+        .footer {
+            font-style: italic;
+            color: #868e96;
+            font-size: 14px;
+            margin-top: 20px;
+            border-top: 1px solid #dee2e6;
+            padding-top: 15px;
+        }
+
+        /* Animasi */
+        @keyframes slideUpFade {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hiasan Hati Berdetak */
+        .heart {
+            color: #ff4757;
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: inline-block;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-card">
+        <div class="circle-1"></div>
+        <div class="circle-2"></div>
+
+        <div class="content">
+            <div class="heart">❤️</div>
+            <h1>Selamat Ulang Tahun</h1>
+            <h2>Untuk Ibuku Tercinta</h2>
+            
+            <p class="doa">
+                Barakallah fii umrik, Ibu. Terima kasih atas segala cinta, kesabaran, dan keringat yang tak pernah putus untuk membesarkanku. Tidak ada kata yang cukup untuk membalas semua pengorbananmu.
+            </p>
+            
+            <p class="doa">
+                Doaku selalu menyertaimu. Semoga Allah SWT senantiasa memberikan Ibu kesehatan, kebahagiaan, dan keberkahan di setiap detik sisa usia Ibu. Semoga setiap langkah dan niat baik Ibu selalu berada dalam perlindungan-Nya, dan dijauhkan dari segala macam kesedihan.
+            </p>
+
+            <p class="doa">
+                Semoga senyum indah itu tidak pernah pudar dari wajah Ibu. Aamiin ya Rabbal 'Alamin.
+            </p>
+
+            <div class="footer">
+                Dari anakmu yang selalu menyayangimu.
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
