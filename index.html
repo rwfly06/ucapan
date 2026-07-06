@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selamat Ulang Tahun, Ibu!</title>
+    <title>Selamat Ulang Tahun, Ibu Elly Mimit!</title>
+    
+    <!-- Import Google Fonts untuk gaya estetik -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         /* Reset & Basic Setup */
         * {
@@ -13,160 +17,201 @@
         }
 
         body {
-            /* Background gelap agar tampilan HP menonjol jika dibuka di PC */
-            background-color: #e2e8f0; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Warna dasar pastel */
+            background-color: #fdf2f8; 
+            font-family: 'Quicksand', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        /* Kontainer Utama - Dibuat seukuran layar HP */
-        .mobile-card {
-            width: 100%;
-            max-width: 420px;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 25px;
-            text-align: center;
-            position: relative;
+        /* Latar Belakang Estetik (Animated Blobs) */
+        .bg-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
             overflow: hidden;
+            background: #fff0f5;
         }
 
-        @media (min-height: 800px) {
-            .mobile-card {
-                min-height: 800px;
-                border-radius: 20px;
-            }
-        }
-
-        /* Dekorasi Lingkaran Latar Belakang */
-        .circle-1, .circle-2 {
+        .blob {
             position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            z-index: 1;
+            filter: blur(40px);
+            opacity: 0.6;
+            animation: float 10s infinite ease-in-out alternate;
         }
-        .circle-1 {
-            width: 200px; height: 200px;
-            top: -50px; left: -50px;
-        }
-        .circle-2 {
+
+        .blob-1 {
             width: 300px; height: 300px;
-            bottom: -100px; right: -100px;
+            background: #fbcfe8;
+            top: -50px; left: -50px;
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
         }
 
-        /* Konten Kartu */
-        .content {
-            position: relative;
-            z-index: 2;
-            background: rgba(255, 255, 255, 0.85);
-            padding: 30px 20px;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
-            
-            /* Diperbaiki: Menambahkan dukungan -webkit- untuk browser Safari/iOS */
-            -webkit-backdrop-filter: blur(4px);
-            backdrop-filter: blur(4px);
-            
-            animation: slideUpFade 1.2s ease-out;
+        .blob-2 {
+            width: 400px; height: 400px;
+            background: #fef08a;
+            bottom: -100px; right: -50px;
+            border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%;
+            animation-delay: -5s;
         }
 
-        /* Tipografi */
-        h1 {
-            color: #d6336c;
-            font-size: 26px;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
+        .blob-3 {
+            width: 250px; height: 250px;
+            background: #bfdbfe;
+            top: 40%; left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50% 50% 60% 40% / 40% 40% 60% 60%;
+            animation-delay: -2s;
         }
 
-        h2 {
-            color: #495057;
-            font-size: 16px;
-            font-weight: 500;
-            margin-bottom: 25px;
+        @keyframes float {
+            0% { transform: translateY(0) scale(1) rotate(0deg); }
+            100% { transform: translateY(-20px) scale(1.05) rotate(10deg); }
         }
 
-        .doa {
-            color: #343a40;
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            text-align: justify;
+        /* Kontainer Utama - Card Minimalis */
+        .mobile-card {
+            width: 90%;
+            max-width: 380px;
+            background: rgba(255, 255, 255, 0.75);
+            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+            padding: 40px 30px;
+            text-align: center;
+            animation: slideUpFade 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity: 0;
+            transform: translateY(30px);
         }
 
-        .doa:last-of-type {
-            margin-bottom: 30px;
-        }
-
-        .footer {
-            font-style: italic;
-            color: #868e96;
-            font-size: 14px;
-            margin-top: 20px;
-            border-top: 1px solid #dee2e6;
-            padding-top: 15px;
-        }
-
-        /* Animasi */
         @keyframes slideUpFade {
-            0% {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            100% {
+            to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        /* Hiasan Hati Berdetak */
-        .heart {
-            color: #ff4757;
-            font-size: 40px;
+        /* Ikon Kue & Bunga Lucu */
+        .cute-icon {
+            font-size: 45px;
             margin-bottom: 15px;
+            animation: bounce 2s infinite;
+            display: inline-block;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* Tipografi */
+        h1 {
+            color: #64748b;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .name-highlight {
+            font-family: 'Caveat', cursive;
+            color: #ec4899;
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(236, 72, 153, 0.15);
+        }
+
+        .doa {
+            color: #475569;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 18px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .doa:last-of-type {
+            margin-bottom: 25px;
+        }
+
+        /* Hiasan Hati */
+        .heart {
+            color: #fb7185;
             display: inline-block;
             animation: heartbeat 1.5s infinite;
         }
 
         @keyframes heartbeat {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
+            50% { transform: scale(1.2); }
+        }
+
+        .footer {
+            font-family: 'Caveat', cursive;
+            color: #94a3b8;
+            font-size: 22px;
+            margin-top: 25px;
+            padding-top: 20px;
+            position: relative;
+        }
+
+        /* Garis pembatas minimalis */
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: #fbcfe8;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
 
+    <!-- Latar Belakang Blob -->
+    <div class="bg-shapes">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Kartu Ucapan -->
     <div class="mobile-card">
-        <div class="circle-1"></div>
-        <div class="circle-2"></div>
+        <div class="cute-icon">🎂🌷</div>
+        
+        <h1>Selamat Ulang Tahun</h1>
+        <div class="name-highlight">Ibu Elly Mimit</div>
+        
+        <p class="doa">
+            Barakallah fii umrik, Ibu. Terima kasih atas segala cinta, kesabaran, dan keringat yang tak pernah putus untuk membesarkanku. Tidak ada kata yang cukup untuk membalas semua pengorbananmu.
+        </p>
+        
+        <p class="doa">
+            Doaku selalu menyertaimu. Semoga Allah SWT senantiasa memberikan Ibu kesehatan, kebahagiaan, dan keberkahan di setiap detik sisa usia Ibu. Semoga Ibu selalu dalam lindungan-Nya.
+        </p>
 
-        <div class="content">
-            <div class="heart">❤️</div>
-            <h1>Selamat Ulang Tahun</h1>
-            <h2>Untuk Ibuku Tercinta</h2>
-            
-            <p class="doa">
-                Barakallah fii umrik, Ibu. Terima kasih atas segala cinta, kesabaran, dan keringat yang tak pernah putus untuk membesarkanku. Tidak ada kata yang cukup untuk membalas semua pengorbananmu.
-            </p>
-            
-            <p class="doa">
-                Doaku selalu menyertaimu. Semoga Allah SWT senantiasa memberikan Ibu kesehatan, kebahagiaan, dan keberkahan di setiap detik sisa usia Ibu. Semoga setiap langkah dan niat baik Ibu selalu berada dalam perlindungan-Nya, dan dijauhkan dari segala macam kesedihan.
-            </p>
+        <p class="doa">
+            Semoga senyum indah itu tidak pernah pudar dari wajah Ibu. Aamiin ya Rabbal 'Alamin <span class="heart">❤️</span>
+        </p>
 
-            <p class="doa">
-                Semoga senyum indah itu tidak pernah pudar dari wajah Ibu. Aamiin ya Rabbal 'Alamin.
-            </p>
-
-            <div class="footer">
-                Dari anakmu yang selalu menyayangimu.
-            </div>
+        <div class="footer">
+            Dari rafly yang selalu meminta duit
         </div>
     </div>
 
